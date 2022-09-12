@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Weater</string>
+    <string name="viewTemp">°C</string>
+    <string name="viewWeather">Weather</string>
+    <string name="btnGetWeather">Find</string>
+    <string name="viewCity">MyCity</string>
+    <string name="deleteCity">╳</string>
+    <string name="findCity">Moscov</string>
+</resources>
