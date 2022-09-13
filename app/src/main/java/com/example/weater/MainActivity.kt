@@ -58,11 +58,7 @@ class MainActivity : AppCompatActivity() {
     private fun reView(){
         binding.viewCity.text = binding.textCity.editableText
         getResult(binding.viewCity.text.toString())
-        binding.viewWeather.text = weather
-        binding.viewTemp.text = buildString {
-            append(temp)
-            append("°C")
-        }
+
     }
 
 
@@ -86,6 +82,10 @@ class MainActivity : AppCompatActivity() {
 
         val mainObject = JSONObject(result)
         temp = mainObject.getJSONObject("current").getString("temp_c").toString()
-        weather = mainObject.getJSONObject("current").getJSONObject("condition").getString("text").toString()
+        binding.viewTemp.text = buildString {
+            append(temp)
+            append("°C")
+        }
+        binding.viewWeather.text = mainObject.getJSONObject("current").getJSONObject("condition").getString("text").toString()
     }
 }
