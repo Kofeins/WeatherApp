@@ -39,33 +39,21 @@ class MainActivity : AppCompatActivity() {
             binding.textCity.text = null
         }
 
-        //Kostyl!!!!!!!!!!
         reView()
-        //!!!!!!!!!!!!!!!!
 
         binding.btnGetWeather.setOnClickListener{
-            //TO COROUTINE. Я РЕАЛЬНО НЕ ПОНИМАЮ КАК ЭТО ВСЕ ЗАПИХАТЬ В КОРУТИНЫ!!!
-            // думал и в класс это вот все запихать, но там какая то проблема с запросом вылезает
-            // Так что это просто приложение где я юзаю API
-            // Но кажется я придумал, но нет времени. Просто не успею...
-
             reView()
         }
-
-
     }
 
     private fun reView(){
         binding.viewCity.text = binding.textCity.editableText
         getResult(binding.viewCity.text.toString())
-
     }
-
-
 
     private fun getResult(city: String){
         val url = "https://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$city&aqi=no"
-        val queue = Volley.newRequestQueue(applicationContext)//А ТЕПЕРЬ МОЖНО И В КЛАС ЗАХУЯРИТЬ, ТОЛЬКО ПОКА ХЗ ЗОЧЕМ
+        val queue = Volley.newRequestQueue(applicationContext)
         val stringRequest = StringRequest(Request.Method.GET,
             url,
             {
@@ -79,7 +67,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun parseJSON(result: String){
-
         val mainObject = JSONObject(result)
         temp = mainObject.getJSONObject("current").getString("temp_c").toString()
         binding.viewTemp.text = buildString {
